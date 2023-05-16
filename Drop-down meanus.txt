@@ -65,3 +65,27 @@
     </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rabbit Hole - Finance and Economics</title>
+</head>
+<body>
+    <header>
+        <h1>Rabbit Hole - Finance and Economics</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="technology.html">Technology</a>
+        <a href="finance.html">Finance and Economics</a>
+        <a href="science.html">Science</a>
+        <a href="sports.html">Sports</a>
+    </nav>
+    <main>
+        <!-- Add your finance and economics-related content or sections here -->
+    </main>
+    <footer>
+        &copy; 2023 Rabbit Hole. All rights reserved.
+    </footer>
+</body>
+</html>
