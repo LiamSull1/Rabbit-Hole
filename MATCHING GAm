@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Matching Game</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 200px;
+      height: 100px;
+      background-color: lightblue;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" data-definition="The quality of appearing true or real within a work of fiction">Verisimilitude</div>
+    <div class="card" data-definition="When an author interrupts story to address the reader directly or express their own thoughts or opinions.">Authorial intrusion</div>
+    <div class="card" data-definition="The repetitive use of conjunctions in close succession creates an emphasis">Polysyndeton</div>
+    <div class="card" data-definition="The repetition of a word to add emphasis or rhetorical effect.">Anaphora</div>
+    <div class="card" data-definition="Giving human characteristics or qualities to non-human entities">Personification</div>
+    <div class="card" data-definition="The repetition of the same sound at the beginning of closely connected words for a rhythmic effect">Alliteration</div>
+    <div class="card" data-definition="A statement or situation that appears to be contradictory or logically impossible but may reveal a deeper truth.">Paradox</div>
+    <div class="card" data-definition="A figure of speech that combines two contradictory terms for emphasis or to create a dramatic or ironic effect.">Oxymoron</div>
+    <div class="card" data-definition="The repetition of grammatical structures, phrases, or clauses to create balance and rhythm in writing or speech.">Parallelism</div>
+    <div class="card" data-definition="The use of words that imitate or suggest the sounds associated with the objects or actions they refer to.">Onomatopoeia</div>
+    <div class="card" data-definition="A figure of speech that compares two unlike things by saying one is another, often using figurative language to create a vivid or imaginative connection.">Metaphor</div>
+    <div class="card" data-definition="A figure of speech that compares two unlike things using 'like' or 'as' to create a descriptive or imaginative connection.">Simile</div>
+    <div class="card" data-definition="A comparison between two things to highlight their similarities in order to explain or clarify a complex idea or concept.">Analogy</div>
+    <div class="card" data-definition="The use of descriptive language, often involving the five senses, to create vivid mental pictures or sensory experiences for the reader.">Imagery</div>
+    <div class="card" data-definition="The repetition of vowel sounds in nearby words or syllables to create a melodic or rhythmic effect.">Assonance</div>
+    <div class="card" data-definition="The repetition of consonant sounds, especially at the end of words, to create a musical or rhythmic effect.">Consonance</div>
+    <div class="card" data-definition="Exaggerated statements or claims not meant to be taken literally but used for emphasis, dramatic effect, or humor.">Hyperbole</div>
+    <div class="card" data-definition="A figure of speech in which a situation, idea, or emotion is intentionally downplayed to create emphasis or irony.">Understatement</div>
+    <div class="card" data-definition="A recurring element, symbol, or theme that contributes to the overall meaning or structure of a literary work.">Motif</div>
+    <div class="card" data-definition="A particular form of language that is specific to a region, social group, or cultural community, characterized by distinctive vocabulary, grammar, and pronunciation.">Dialect</div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    let flippedCard = false;
+    let firstCard, secondCard;
+
+    function flipCard() {
+      this.classList.add('flip');
+
+      if (!flippedCard) {
+        flippedCard = true;
+        firstCard = this;
+      } else {
+        flippedCard = false;
+        secondCard = this;
+
+        if (firstCard.dataset.definition === secondCard.dataset.definition) {
+          firstCard.removeEventListener('click', flipCard);
+          secondCard.removeEventListener('click', flipCard);
+          resetCards();
+        } else {
+          setTimeout(() => {
+            firstCard.classList.remove('flip');
+            secondCard.classList.remove('flip');
+            resetCards();
+          }, 1000);
+        }
+      }
+    }
+
+    function resetCards() {
+      flippedCard = false;
+      firstCard = null;
+      secondCard = null;
+    }
+
+    cards.forEach(card => card.addEventListener('click', flipCard));
+  </script>
+</body>
+</html>
